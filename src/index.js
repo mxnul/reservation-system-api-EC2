@@ -11,6 +11,7 @@ const userRoutes = require("./routes/userRoutes");
 const routeRoutes = require("./routes/routeRoutes");
 const busRoutes = require("./routes/busRoutes");
 const tripRoutes = require("./routes/tripRoutes");
+const bookingRoutes = require("./routes/bookingRoutes");
 
 dbConnect();
 
@@ -25,6 +26,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/route", routeRoutes);
 app.use("/api/bus", busRoutes);
 app.use("/api/trip",tripRoutes);
+app.use("/api/booking", bookingRoutes);
 
 //start the server
 const PORT = process.env.PORT || 7002 ;
