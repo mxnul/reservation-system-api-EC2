@@ -7,6 +7,13 @@ const routeSchema = new mongoose.Schema(
       required : true,
       unique : true
     },
+
+    routeName :{
+      type: String,
+      required : true,
+      unique : true
+    },
+
    
     origin :{
       type: String,
