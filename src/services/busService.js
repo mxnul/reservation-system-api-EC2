@@ -19,6 +19,7 @@ const createBus = async (req, res) => {
     // Create the bus with the found routeId
     const bus = new Bus({
       busId: req.body.busId,
+      busNumber: req.body.busNumber,
       routeId: route.routeId,  // Use the routeId (string)
       capacity: req.body.capacity,
     });
@@ -95,10 +96,11 @@ const getBusesByRouteId = async (req, res) => {
 // Function to update a bus by busId
 const updateBusById = async (req, res) => {
   try {
-    const { busId } = req.params;  // Extract busId from URL parameter
+    const { busId } = req.body;  // Extract busId from URL parameter
+    console.log('busId' , busId);
 
     // Check if the bus exists
-    const bus = await Bus.findOne({ busId });
+    const bus = await Bus.findOne({ busId :busId });
     if (!bus) {
       return res.status(404).json({ message: "Bus not found" });
     }
@@ -111,6 +113,7 @@ const updateBusById = async (req, res) => {
 
     // Update the bus with the new routeId and capacity
     const updatedBus = await Bus.findOneAndUpdate({ busId }, req.body, { new: true });
+    await updatedBus.save();
 
     res.status(200).json(updatedBus);  // Return the updated bus
   } catch (error) {
