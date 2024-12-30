@@ -12,13 +12,23 @@ const routeRoutes = require("./routes/routeRoutes");
 const busRoutes = require("./routes/busRoutes");
 const tripRoutes = require("./routes/tripRoutes");
 const bookingRoutes = require("./routes/bookingRoutes");
+const cors = require("cors");
 
 dbConnect();
 
 const app = express();
 
+
+
+
 //middleware
 app.use(express.json());
+
+app.use(cors({
+  origin: "*", // Allow all origins (replace "*" with specific origin(s) in production)
+  methods: ["GET", "POST", "PUT", "DELETE"], // Allowed HTTP methods
+  allowedHeaders: ["Content-Type", "Authorization"], // Allowed headers
+}));
 
 //routes
 app.use("/api/auth", authRoutes); 
