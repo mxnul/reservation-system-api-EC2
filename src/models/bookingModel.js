@@ -3,17 +3,17 @@ const mongoose = require('mongoose');
 const bookingSchema = new mongoose.Schema(
   {
     routeId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: 'Route',
       required: true,
     },
     busId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: 'Bus',
       required: true,
     },
     tripId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: 'Trip',
       required: true,
     },
@@ -21,14 +21,19 @@ const bookingSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    Email: {
+      type: String,
+      required: true,
+    },
+
     seatNumber: {
       type: Number,
       required: true,
     },
     status: {
       type: String,
-      enum: ['confirmed', 'cancelled'],
-      default: 'confirmed',
+      enum: ['available', 'confirmed', 'cancelled'],
+      default: 'available',
     },
   },
   { timestamps: true }

@@ -2,6 +2,7 @@ const {
   createBus,
   getAllBuses,
   getBusById,
+  getBusesByRouteId,
   updateBusById,
   deleteBusById,
 } = require("../services/busService");
@@ -20,6 +21,10 @@ const getBusByIdController = async (req, res) => {
   await getBusById(req, res);
 };
 
+const getBusesByRouteIdController = async (req, res) => {
+  await getBusesByRouteId(req, res);
+};
+
 const updateBusByIdController = async (req, res) => {
   await updateBusById(req, res);
 };
@@ -32,6 +37,7 @@ module.exports = {
   createBusController,
   getAllBusesController,
   getBusByIdController,
+  getBusesByRouteIdController,
   updateBusByIdController,
   deleteBusByIdController,
 };

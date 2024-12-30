@@ -4,10 +4,10 @@ const { createRouteController,getRouteController,getRouteByIdController, updateR
 
 const router = express.Router();
 
-router.post("/route", createRouteController);
-router.get("/route", getRouteController);
-router.get("/routeById", getRouteByIdController);
-router.put("/route", updateRouteByIdController);
-router.delete("/route", deleteRouteByIdController);
+router.post("/", createRouteController);
+router.get("/", getRouteController);
+router.get("/:routeId", getRouteByIdController);
+router.put("/:routeId", updateRouteByIdController);
+router.delete("/:routeId", deleteRouteByIdController);
 
 module.exports = router;

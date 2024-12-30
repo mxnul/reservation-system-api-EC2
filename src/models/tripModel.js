@@ -8,12 +8,12 @@ const tripSchema = new mongoose.Schema(
       unique : true,
     },
     routeId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: 'Route',
       required: true,
     },
     busId: {
-      type: mongoose.Schema.Types.ObjectId,
+      type: String,
       ref: 'Bus',
       required: true,
     },
@@ -21,10 +21,10 @@ const tripSchema = new mongoose.Schema(
       type: Date,
       required: true,
     },
-    arrivalTime: {
-      type: Date,
-      required: true,
-    },
+    // arrivalTime: {
+    //   type: Date,
+    //   required: true,
+    // },
   },
   { timestamps: true }
 );

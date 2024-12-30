@@ -1,6 +1,6 @@
 const Route = require("../models/routeModel");
 
-const createRoute = async(req, res) => {
+const createRoute = async (req, res) => {
   try {
     const existingRoute = await Route.findOne({ routeId: req.body.routeId });
     if (existingRoute) {
@@ -13,7 +13,6 @@ const createRoute = async(req, res) => {
   }
 };
 
-
 const getRoute = async (req, res) => {
   try {
     const routes = await Route.find({});
@@ -25,7 +24,7 @@ const getRoute = async (req, res) => {
 
 const getRouteById = async (req, res) => {
   try {
-    const { routeId } = req.body;
+    const { routeId } = req.params;  // Changed from req.body to req.params
     const route = await Route.findOne({ routeId: routeId });
     if (!route) {
       return res.status(404).json({ message: `Cannot find route with ID ${routeId}` });
@@ -38,13 +37,8 @@ const getRouteById = async (req, res) => {
 
 const updateRouteById = async (req, res) => {
   try {
-    console.log('params' ,req.params);
-
-    const { routeId } = req.body;
-    console.log('routeId' ,routeId);
-
+    const { routeId } = req.params;  // Changed from req.body to req.params
     const route = await Route.findOneAndUpdate({ routeId: routeId }, req.body, { new: true });
-    console.log('route' ,route);
     if (!route) {
       return res.status(404).json({ message: `Cannot find any route with ID ${routeId}` });
     }
@@ -56,8 +50,8 @@ const updateRouteById = async (req, res) => {
 
 const deleteRouteById = async (req, res) => {
   try {
-    const { routeId } = req.body;
-    const route = await Route.findOneAndDelete(routeId);
+    const { routeId } = req.params;  // Changed from req.body to req.params
+    const route = await Route.findOneAndDelete({ routeId: routeId });
     if (!route) {
       return res.status(404).json({ message: `Cannot find any route with ID ${routeId}` });
     }
@@ -68,11 +62,9 @@ const deleteRouteById = async (req, res) => {
 };
 
 module.exports = {
-
   createRoute,
   getRoute,
   getRouteById,
   updateRouteById,
   deleteRouteById,
-  
-  };
+};

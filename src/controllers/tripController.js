@@ -2,6 +2,7 @@ const {
   createScheduledTrip,
   getAllScheduledTrips,
   getScheduledTripById,
+  getScheduledTripsByRouteId,
   updateScheduledTripById,
   deleteScheduledTripById,
 } = require("../services/tripService");
@@ -18,6 +19,10 @@ const getScheduledTripByIdController = async (req, res) => {
   await getScheduledTripById(req, res);
 };
 
+const getScheduledTripsByRouteIdController = async (req, res) => {
+  await getScheduledTripsByRouteId(req, res);
+};
+
 const updateScheduledTripByIdController = async (req, res) => {
   await updateScheduledTripById(req, res);
 };
@@ -30,6 +35,7 @@ module.exports = {
   createScheduledTripController,
   getAllScheduledTripsController,
   getScheduledTripByIdController,
+  getScheduledTripsByRouteIdController,
   updateScheduledTripByIdController,
   deleteScheduledTripByIdController,
 };

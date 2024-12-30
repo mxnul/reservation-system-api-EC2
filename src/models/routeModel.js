@@ -7,6 +7,7 @@ const routeSchema = new mongoose.Schema(
       required : true,
       unique : true
     },
+   
     origin :{
       type: String,
       required : true,
@@ -22,11 +23,11 @@ const routeSchema = new mongoose.Schema(
       required : true,
      
     },
-    stops :{
-      type: String,
-      required : true,
+    // stops :{
+    //   type: String,
+    //   required : true,
      
-    },
+    // },
     
 
   },
